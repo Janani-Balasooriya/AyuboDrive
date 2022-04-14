@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AyuboDrive", "AyuboDrive\AyuboDrive.csproj", "{8F23B0AD-ECA4-4EFA-99A3-973AC76FB228}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HND_Project2", "..\..\visualStudio projects\HND_Project2\HND_Project2\HND_Project2.csproj", "{90D114B2-E62A-427C-8309-C00C6BFE8EBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8F23B0AD-ECA4-4EFA-99A3-973AC76FB228}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F23B0AD-ECA4-4EFA-99A3-973AC76FB228}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F23B0AD-ECA4-4EFA-99A3-973AC76FB228}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90D114B2-E62A-427C-8309-C00C6BFE8EBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D114B2-E62A-427C-8309-C00C6BFE8EBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D114B2-E62A-427C-8309-C00C6BFE8EBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D114B2-E62A-427C-8309-C00C6BFE8EBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
