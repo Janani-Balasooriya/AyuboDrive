@@ -40,5 +40,17 @@ namespace AyuboDrive
             DayTourHireCalculationForm dayTourHireCalculationForm = new DayTourHireCalculationForm();
             dayTourHireCalculationForm.ShowDialog();
         }
+
+        private void longTourHireBtn_Click(object sender, EventArgs e)
+        {
+            LongTourHireCalculationForm longTourHireCalculationForm = new LongTourHireCalculationForm();
+            longTourHireCalculationForm.ShowDialog();
+        }
+
+        private void packageDetailsBtn_Click(object sender, EventArgs e)
+        {
+            PackageForm packageForm = new PackageForm();
+            packageForm.ShowDialog();
+        }
     }
 }

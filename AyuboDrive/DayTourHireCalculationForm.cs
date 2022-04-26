@@ -20,6 +20,11 @@ namespace AyuboDrive
         public DayTourHireCalculationForm()
         {
             InitializeComponent();
+            var t = DateTime.Now;
+            var now = new DateTime(t.Year, t.Month, t.Day, t.Hour, t.Minute, t.Second);
+            startTimeDtp.Value = now;
+            endTimeDtp.Value = now;
+
             loadPackageTypeCombo();
         }
 
@@ -31,9 +36,9 @@ namespace AyuboDrive
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                vehicleTypeCombo.DisplayMember = "name";
-                //vehicleTypeCombo.ValueMember = "idPackage";
-                vehicleTypeCombo.DataSource = dt;
+                packageTypeCombo.DisplayMember = "name";
+                packageTypeCombo.ValueMember = "name";
+                packageTypeCombo.DataSource = dt;
             }
             catch (Exception ex)
             {
@@ -44,7 +49,7 @@ namespace AyuboDrive
         private void calculateBtn_Click(object sender, EventArgs e)
         {
             int vehicle_no = Int32.Parse(vehicleNoTxt.Text);
-            int package_type = Int32.Parse(vehicleTypeCombo.Text);
+            string package_type = packageTypeCombo.SelectedValue.ToString();
             DateTime start_time = startTimeDtp.Value;
             DateTime end_time = endTimeDtp.Value;
             double start_km_reading = double.Parse(startKmReadingTxt.Text);
@@ -53,16 +58,21 @@ namespace AyuboDrive
             CalculateDayTourHire(vehicle_no,package_type,start_time,end_time,start_km_reading,end_km_reading);
         }
 
-        private void CalculateDayTourHire(int vehicle_no, int package_type, DateTime start_time, 
+        private void CalculateDayTourHire(int vehicle_no, string package_type, DateTime start_time, 
             DateTime end_time, double start_km_reading, double end_km_reading)
         {
-            double standard_rate;
-            double max_Km_limit;
-            int max_hours;
-            double extra_Km_rate;
-            double waiting_charge_per_hour;
-            double driver_overnight_rate;
-            double night_park_rate;
+            double base_hire_charge;
+            double waiting_charge = 0.00;
+            double extra_km_charge = 0.00;
+
+            // Getting package details from Database
+            base_hire_charge = 0.00; //standard rate
+            double max_Km_limit = 0.0;
+            int max_hours = 0;
+            double extra_Km_rate = 0;
+            double waiting_charge_per_hour = 0;
+            //double driver_overnight_rate;
+            //double night_park_rate;
 
             try
             {
@@ -70,24 +80,23 @@ namespace AyuboDrive
                 SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.PackageDetail INNER JOIN dbo.VehicleType "+
                     "ON dbo.PackageDetail.idVehicleType = dbo.VehicleType.idType INNER JOIN dbo.Vehicle "+
                     "ON dbo.Vehicle.idVehicleType = dbo.VehicleType.idType "+
-                    "WHERE dbo.Vehicle.idvehicle= @vno AND dbo.PackageDetail.name = @packageName;", cnn);
+                    "WHERE dbo.Vehicle.idvehicle= @vno AND dbo.PackageDetail.name = @packageName", cnn);
                 cmd.Parameters.AddWithValue("@vno", vehicle_no);
                 cmd.Parameters.AddWithValue("@packageName", package_type);
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    standard_rate = double.Parse(dr[2].ToString());
+                    base_hire_charge = double.Parse(dr[2].ToString(), System.Globalization.NumberStyles.AllowDecimalPoint);
                     max_Km_limit = double.Parse(dr[3].ToString());
                     max_hours = Int32.Parse(dr[4].ToString());
-                    extra_Km_rate = int.Parse(dr[5].ToString());
-                    waiting_charge_per_hour = Int32.Parse(dr[6].ToString());
-                    driver_overnight_rate = double.Parse(dr[7].ToString());
-                    night_park_rate = double.Parse(dr[8].ToString());
-
+                    extra_Km_rate = double.Parse(dr[5].ToString()); 
+                    waiting_charge_per_hour = double.Parse(dr[6].ToString());
+                    // driver_overnight_rate = double.Parse(dr[7].ToString());
+                    //night_park_rate = double.Parse(dr[8].ToString());
                 }
                 else
                 {
-                    MessageBox.Show("Vehicle NOT Found");
+                    MessageBox.Show("Package NOT Found");
                 }
                 cnn.Close();
             }
@@ -96,11 +105,53 @@ namespace AyuboDrive
                 MessageBox.Show(ex.Message);
             }
 
-            double base_hire_charge = 0;
-            double waiting_charge = 0;
-            double extra_km_charge = 0;
-        }
+            // Time difference Calculation
+            TimeSpan tour_time_duration = (end_time - start_time);
 
-        
+            // Waiting charge calculation
+            double extra_hours_travelled =0 ;
+            if ( tour_time_duration.TotalHours > max_hours)
+            {
+               extra_hours_travelled = tour_time_duration.TotalHours - max_hours;
+               // TimeSpan interval = TimeSpan.FromHours(extra_hours_travelled);
+               // waiting_charge = interval.TotalHours * waiting_charge_per_hour;
+                waiting_charge = extra_hours_travelled * waiting_charge_per_hour;
+                
+            }
+
+            // Distance calculation in Km
+            double tour_distance = end_km_reading - start_km_reading;
+
+            // Extra km charge calculation
+            double extra_km_travelled = 0;
+            if (tour_distance > max_Km_limit)
+            {
+                extra_km_travelled = tour_distance - max_Km_limit;
+                extra_km_charge = extra_km_travelled * extra_Km_rate;
+            }
+
+            // Calculating total rent
+            double total_rent = base_hire_charge + extra_km_charge + waiting_charge;
+
+            // Displaying values in interface
+            maxKmLimitLabel.Text = max_Km_limit.ToString()+" Km";
+            maxHoursLabel.Text = max_hours.ToString()+" Hrs"; 
+
+            distanceTravelledLabel.Text= tour_distance.ToString() + " Km";
+            tourDurationLabel.Text = tour_time_duration.Hours + " Hrs : "+ tour_time_duration.Minutes+" min";
+
+            baseHireChargeLabel.Text ="Rs. "+base_hire_charge;//
+            MessageBox.Show("Rs. " + base_hire_charge);
+
+            extraKmsLabel.Text = String.Format("{0:0.##}", extra_km_travelled)+" Km"; 
+            extraKmChargeRateLabel.Text = "Rs. " + String.Format("{0:0.##}", extra_Km_rate); 
+            extraKmChargeLabel.Text = "Rs. " + extra_km_charge.ToString(); 
+
+            extraHoursLabel.Text = Math.Round(extra_hours_travelled,2) + " Hrs"; 
+            waitingChargeRateLabel.Text = "Rs. " + String.Format("{0:0.##}", waiting_charge_per_hour); 
+            waitingChargeLabel.Text = "Rs. " + String.Format("{0:0.##}", waiting_charge);
+            
+            totalHireLabel.Text = "Rs. " + String.Format("{0:0.##}", total_rent);
+        }
     }
 }

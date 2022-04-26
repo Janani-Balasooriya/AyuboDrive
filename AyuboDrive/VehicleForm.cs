@@ -79,11 +79,5 @@ namespace AyuboDrive
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var vehicleTypeForm= new VehicleTypeForm();
-            vehicleTypeForm.Show();
-        }
-
     }
 }

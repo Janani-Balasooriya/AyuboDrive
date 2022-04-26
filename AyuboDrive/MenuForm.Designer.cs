@@ -32,6 +32,8 @@
             this.vehicleTypeBtn = new System.Windows.Forms.Button();
             this.rentCalculationBtn = new System.Windows.Forms.Button();
             this.dayTourHireBtn = new System.Windows.Forms.Button();
+            this.longTourHireBtn = new System.Windows.Forms.Button();
+            this.packageDetailsBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // vehicleBtn
@@ -48,7 +50,7 @@
             // vehicleTypeBtn
             // 
             this.vehicleTypeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vehicleTypeBtn.Location = new System.Drawing.Point(94, 142);
+            this.vehicleTypeBtn.Location = new System.Drawing.Point(301, 80);
             this.vehicleTypeBtn.Name = "vehicleTypeBtn";
             this.vehicleTypeBtn.Size = new System.Drawing.Size(164, 56);
             this.vehicleTypeBtn.TabIndex = 0;
@@ -59,7 +61,7 @@
             // rentCalculationBtn
             // 
             this.rentCalculationBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rentCalculationBtn.Location = new System.Drawing.Point(316, 80);
+            this.rentCalculationBtn.Location = new System.Drawing.Point(94, 259);
             this.rentCalculationBtn.Name = "rentCalculationBtn";
             this.rentCalculationBtn.Size = new System.Drawing.Size(164, 56);
             this.rentCalculationBtn.TabIndex = 0;
@@ -70,7 +72,7 @@
             // dayTourHireBtn
             // 
             this.dayTourHireBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dayTourHireBtn.Location = new System.Drawing.Point(316, 142);
+            this.dayTourHireBtn.Location = new System.Drawing.Point(301, 259);
             this.dayTourHireBtn.Name = "dayTourHireBtn";
             this.dayTourHireBtn.Size = new System.Drawing.Size(164, 56);
             this.dayTourHireBtn.TabIndex = 0;
@@ -78,13 +80,37 @@
             this.dayTourHireBtn.UseVisualStyleBackColor = true;
             this.dayTourHireBtn.Click += new System.EventHandler(this.dayTourHireBtn_Click);
             // 
+            // longTourHireBtn
+            // 
+            this.longTourHireBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.longTourHireBtn.Location = new System.Drawing.Point(504, 259);
+            this.longTourHireBtn.Name = "longTourHireBtn";
+            this.longTourHireBtn.Size = new System.Drawing.Size(164, 56);
+            this.longTourHireBtn.TabIndex = 0;
+            this.longTourHireBtn.Text = "Long Tour Hire Calculation";
+            this.longTourHireBtn.UseVisualStyleBackColor = true;
+            this.longTourHireBtn.Click += new System.EventHandler(this.longTourHireBtn_Click);
+            // 
+            // packageDetailsBtn
+            // 
+            this.packageDetailsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.packageDetailsBtn.Location = new System.Drawing.Point(504, 80);
+            this.packageDetailsBtn.Name = "packageDetailsBtn";
+            this.packageDetailsBtn.Size = new System.Drawing.Size(164, 56);
+            this.packageDetailsBtn.TabIndex = 0;
+            this.packageDetailsBtn.Text = "Package Details";
+            this.packageDetailsBtn.UseVisualStyleBackColor = true;
+            this.packageDetailsBtn.Click += new System.EventHandler(this.packageDetailsBtn_Click);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.longTourHireBtn);
             this.Controls.Add(this.dayTourHireBtn);
             this.Controls.Add(this.rentCalculationBtn);
+            this.Controls.Add(this.packageDetailsBtn);
             this.Controls.Add(this.vehicleTypeBtn);
             this.Controls.Add(this.vehicleBtn);
             this.Name = "MenuForm";
@@ -99,5 +125,7 @@
         private System.Windows.Forms.Button vehicleTypeBtn;
         private System.Windows.Forms.Button rentCalculationBtn;
         private System.Windows.Forms.Button dayTourHireBtn;
+        private System.Windows.Forms.Button longTourHireBtn;
+        private System.Windows.Forms.Button packageDetailsBtn;
     }
 }

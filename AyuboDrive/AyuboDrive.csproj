@@ -52,11 +52,29 @@
     <Compile Include="DayTourHireCalculationForm.Designer.cs">
       <DependentUpon>DayTourHireCalculationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LongTourHireCalculationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LongTourHireCalculationForm.Designer.cs">
+      <DependentUpon>LongTourHireCalculationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MenuForm.Designer.cs">
       <DependentUpon>MenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PackageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PackageForm.Designer.cs">
+      <DependentUpon>PackageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RentCalculationForm.cs">
       <SubType>Form</SubType>
@@ -81,8 +99,14 @@
     <EmbeddedResource Include="DayTourHireCalculationForm.resx">
       <DependentUpon>DayTourHireCalculationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LongTourHireCalculationForm.resx">
+      <DependentUpon>LongTourHireCalculationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuForm.resx">
       <DependentUpon>MenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackageForm.resx">
+      <DependentUpon>PackageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RentCalculationForm.resx">
       <DependentUpon>RentCalculationForm.cs</DependentUpon>
