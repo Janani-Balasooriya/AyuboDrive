@@ -62,14 +62,15 @@ namespace AyuboDrive
         private void CalculateLongTourHire(int vehicle_no, string package_type, DateTime start_date,
             DateTime end_date, double start_km_reading, double end_km_reading)
         {
-            double base_hire_charge;
+            double base_hire_charge=0.00;
             double overnight_stay_charge = 0.00;
             double driver_overnight_stay_charge = 0.00;
             double vehicle_night_park_charge = 0.0;
             double extra_km_charge = 0.00;
 
+
             // Getting package details from Database
-            base_hire_charge = 0.00; //standard rate
+            double standard_rate = 0.00; //standard rate
             double max_Km_limit = 0.0;
             double extra_Km_rate = 0;
             double driver_overnight_rate =0.0;
@@ -89,7 +90,7 @@ namespace AyuboDrive
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    base_hire_charge = double.Parse(dr[2].ToString(), System.Globalization.NumberStyles.AllowDecimalPoint);
+                    standard_rate = double.Parse(dr[2].ToString(), System.Globalization.NumberStyles.AllowDecimalPoint);
                     max_Km_limit = double.Parse(dr[3].ToString());
                     extra_Km_rate = double.Parse(dr[5].ToString());
                     driver_overnight_rate = double.Parse(dr[7].ToString());
@@ -112,6 +113,9 @@ namespace AyuboDrive
             // Distance calculation in Km
             double tour_distance = end_km_reading - start_km_reading;
 
+            //calculate base hire charge for days travelled
+            base_hire_charge = total_days* standard_rate;
+
             // Extra km charge calculation
             double extra_km_travelled = 0;
             if (tour_distance > max_Km_limit)
@@ -121,22 +125,16 @@ namespace AyuboDrive
             }
 
             //Calculate Driver overnight rate
-            if (total_days >= 2)
-            {
-                driver_overnight_stay_charge = driver_overnight_rate * (total_days-1);
-            }
+            driver_overnight_stay_charge = driver_overnight_rate * (total_days);
 
             //Calculate vehicle night park rate
-            if (total_days >= 2)
-            {
-                vehicle_night_park_charge = night_park_rate * (total_days - 1);
-            }
+            vehicle_night_park_charge = night_park_rate * (total_days);
 
             //Calculate overnight stay charge
             overnight_stay_charge = driver_overnight_stay_charge + vehicle_night_park_charge;
 
             // Calculating total rent
-            double total_rent = base_hire_charge + overnight_stay_charge +extra_km_charge;
+            double total_rent = standard_rate + overnight_stay_charge +extra_km_charge;
 
             // Displaying values in interface
             maxKmLimitLabel.Text = max_Km_limit.ToString() + " Km";
@@ -144,17 +142,19 @@ namespace AyuboDrive
             distanceTravelledLabel.Text = tour_distance.ToString() + " Km";
             tourDurationLabel.Text = total_days+" days";
 
+            daysForBaseHireChargeLbl.Text = total_days+"days";
+            standardRateLabel.Text = "Rs. " + standard_rate;
             baseHireChargeLabel.Text = "Rs. " + base_hire_charge;
 
             extraKmsLabel.Text = String.Format("{0:0.##}", extra_km_travelled) + " Km";
             extraKmChargeRateLabel.Text = "Rs. " + String.Format("{0:0.##}", extra_Km_rate);
             extraKmChargeLabel.Text = "Rs. " + extra_km_charge.ToString();
 
-            daysOvernightLabel.Text = (total_days-1) + " days";
+            daysOvernightLabel.Text = (total_days) + " days";
             driverOvernightRateLabel.Text = "Rs. " + String.Format("{0:0.00}", driver_overnight_rate);
             driverOvernightChargeLabel.Text = "Rs. " + String.Format("{0:0.00}", driver_overnight_stay_charge);
             
-            daysNightParkLabel.Text = (total_days-1) + " days";
+            daysNightParkLabel.Text = (total_days) + " days";
             nightParkRateLabel.Text = "Rs. " + String.Format("{0:0.00}", night_park_rate);
             nightParkRateChargeLabel.Text = "Rs. " + String.Format("{0:0.00}", vehicle_night_park_charge);
 

@@ -31,7 +31,7 @@
             this.extraKmChargeLabel = new System.Windows.Forms.Label();
             this.extraKmChargeRateLabel = new System.Windows.Forms.Label();
             this.daysOvernightLabel = new System.Windows.Forms.Label();
-            this.baseHireChargeLabel = new System.Windows.Forms.Label();
+            this.standardRateLabel = new System.Windows.Forms.Label();
             this.totalHireLabel = new System.Windows.Forms.Label();
             this.driverOvernightChargeLabel = new System.Windows.Forms.Label();
             this.driverOvernightRateLabel = new System.Windows.Forms.Label();
@@ -49,6 +49,7 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.daysForBaseHireChargeLbl = new System.Windows.Forms.Label();
             this.nightParkRateChargeLabel = new System.Windows.Forms.Label();
             this.nightParkRateLabel = new System.Windows.Forms.Label();
             this.daysNightParkLabel = new System.Windows.Forms.Label();
@@ -80,6 +81,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.packageTypeCombo = new System.Windows.Forms.ComboBox();
             this.calculateBtn = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
+            this.baseHireChargeLabel = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -117,16 +120,16 @@
             this.daysOvernightLabel.Text = "label6";
             this.daysOvernightLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // baseHireChargeLabel
+            // standardRateLabel
             // 
-            this.baseHireChargeLabel.AutoSize = true;
-            this.baseHireChargeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.baseHireChargeLabel.Location = new System.Drawing.Point(343, 26);
-            this.baseHireChargeLabel.Name = "baseHireChargeLabel";
-            this.baseHireChargeLabel.Size = new System.Drawing.Size(44, 16);
-            this.baseHireChargeLabel.TabIndex = 5;
-            this.baseHireChargeLabel.Text = "label6";
-            this.baseHireChargeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.standardRateLabel.AutoSize = true;
+            this.standardRateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardRateLabel.Location = new System.Drawing.Point(271, 32);
+            this.standardRateLabel.Name = "standardRateLabel";
+            this.standardRateLabel.Size = new System.Drawing.Size(44, 16);
+            this.standardRateLabel.TabIndex = 5;
+            this.standardRateLabel.Text = "label6";
+            this.standardRateLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // totalHireLabel
             // 
@@ -295,7 +298,9 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.totalHireLabel);
+            this.panel1.Controls.Add(this.daysForBaseHireChargeLbl);
             this.panel1.Controls.Add(this.nightParkRateChargeLabel);
+            this.panel1.Controls.Add(this.baseHireChargeLabel);
             this.panel1.Controls.Add(this.driverOvernightChargeLabel);
             this.panel1.Controls.Add(this.nightParkRateLabel);
             this.panel1.Controls.Add(this.driverOvernightRateLabel);
@@ -304,7 +309,7 @@
             this.panel1.Controls.Add(this.daysNightParkLabel);
             this.panel1.Controls.Add(this.daysOvernightLabel);
             this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.baseHireChargeLabel);
+            this.panel1.Controls.Add(this.standardRateLabel);
             this.panel1.Controls.Add(this.extraKmsLabel);
             this.panel1.Controls.Add(this.label24);
             this.panel1.Controls.Add(this.label27);
@@ -313,6 +318,7 @@
             this.panel1.Controls.Add(this.label18);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label21);
+            this.panel1.Controls.Add(this.label26);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label10);
@@ -326,6 +332,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(444, 257);
             this.panel1.TabIndex = 31;
+            // 
+            // daysForBaseHireChargeLbl
+            // 
+            this.daysForBaseHireChargeLbl.AutoSize = true;
+            this.daysForBaseHireChargeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.daysForBaseHireChargeLbl.Location = new System.Drawing.Point(202, 32);
+            this.daysForBaseHireChargeLbl.Name = "daysForBaseHireChargeLbl";
+            this.daysForBaseHireChargeLbl.Size = new System.Drawing.Size(37, 16);
+            this.daysForBaseHireChargeLbl.TabIndex = 16;
+            this.daysForBaseHireChargeLbl.Text = "label";
             // 
             // nightParkRateChargeLabel
             // 
@@ -484,7 +500,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(322, 26);
+            this.label9.Location = new System.Drawing.Point(322, 32);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(14, 16);
             this.label9.TabIndex = 2;
@@ -621,6 +637,27 @@
             this.calculateBtn.UseVisualStyleBackColor = true;
             this.calculateBtn.Click += new System.EventHandler(this.calculateBtn_Click);
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(252, 32);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(15, 16);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "X";
+            // 
+            // baseHireChargeLabel
+            // 
+            this.baseHireChargeLabel.AutoSize = true;
+            this.baseHireChargeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.baseHireChargeLabel.Location = new System.Drawing.Point(344, 32);
+            this.baseHireChargeLabel.Name = "baseHireChargeLabel";
+            this.baseHireChargeLabel.Size = new System.Drawing.Size(44, 16);
+            this.baseHireChargeLabel.TabIndex = 5;
+            this.baseHireChargeLabel.Text = "label6";
+            this.baseHireChargeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // LongTourHireCalculationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -657,7 +694,7 @@
         private System.Windows.Forms.Label extraKmChargeLabel;
         private System.Windows.Forms.Label extraKmChargeRateLabel;
         private System.Windows.Forms.Label daysOvernightLabel;
-        private System.Windows.Forms.Label baseHireChargeLabel;
+        private System.Windows.Forms.Label standardRateLabel;
         private System.Windows.Forms.Label totalHireLabel;
         private System.Windows.Forms.Label driverOvernightChargeLabel;
         private System.Windows.Forms.Label driverOvernightRateLabel;
@@ -706,5 +743,8 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label daysForBaseHireChargeLbl;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label baseHireChargeLabel;
     }
 }
