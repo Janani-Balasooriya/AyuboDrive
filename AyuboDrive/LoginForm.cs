@@ -7,14 +7,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace AyuboDrive
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : MaterialForm
     {
         public LoginForm()
         {
             InitializeComponent();
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, 
+                Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+        }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            string username = emailTextBox.Text;
+            string password = passwordTextBox.Text;
+
+            this.Hide();
+            new MenuForm().ShowDialog();
+            this.Close();
+            
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace AyuboDrive
 {
-    public partial class DayTourHireCalculationForm : Form
+    public partial class DayTourHireCalculationForm : MaterialForm
     {
         static string connectionStr = "Data Source=DESKTOP-GA6UOAH\\SQLEXPRESS;" +
             "Initial Catalog=AyuboDrive; Integrated Security=true;";
@@ -20,45 +22,33 @@ namespace AyuboDrive
         public DayTourHireCalculationForm()
         {
             InitializeComponent();
+            searchComboBoxValues();
             var t = DateTime.Now;
             var now = new DateTime(t.Year, t.Month, t.Day, t.Hour, t.Minute, t.Second);
             startTimeDtp.Value = now;
             endTimeDtp.Value = now;
-
-            loadPackageTypeCombo();
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800,
+                Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        private void loadPackageTypeCombo()
-        {
-            try
-            {
-                SqlDataAdapter da = new SqlDataAdapter("SELECT DISTINCT name from PackageDetail", cnn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                packageTypeCombo.DisplayMember = "name";
-                packageTypeCombo.ValueMember = "name";
-                packageTypeCombo.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
         private void calculateBtn_Click(object sender, EventArgs e)
         {
-            int vehicle_no = Int32.Parse(vehicleNoTxt.Text);
-            string package_type = packageTypeCombo.SelectedValue.ToString();
+            string vehicle_no = vehicleNoComboTxt.SelectedValue.ToString();
             DateTime start_time = startTimeDtp.Value;
             DateTime end_time = endTimeDtp.Value;
             double start_km_reading = double.Parse(startKmReadingTxt.Text);
             double end_km_reading = double.Parse(endKmReadingTxt.Text);
 
-            CalculateDayTourHire(vehicle_no,package_type,start_time,end_time,start_km_reading,end_km_reading);
+            CalculateDayTourHire(vehicle_no,start_time,end_time,start_km_reading,end_km_reading);
+            panel1.Visible = true;
+            panel2.Visible = true;
         }
 
-        private void CalculateDayTourHire(int vehicle_no, string package_type, DateTime start_time, 
+        private void CalculateDayTourHire(string vehicle_no, DateTime start_time, 
             DateTime end_time, double start_km_reading, double end_km_reading)
         {
             double base_hire_charge;
@@ -80,9 +70,8 @@ namespace AyuboDrive
                 SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.PackageDetail INNER JOIN dbo.VehicleType "+
                     "ON dbo.PackageDetail.idVehicleType = dbo.VehicleType.idType INNER JOIN dbo.Vehicle "+
                     "ON dbo.Vehicle.idVehicleType = dbo.VehicleType.idType "+
-                    "WHERE dbo.Vehicle.idvehicle= @vno AND dbo.PackageDetail.name = @packageName", cnn);
+                    "WHERE dbo.Vehicle.idvehicle= @vno", cnn);
                 cmd.Parameters.AddWithValue("@vno", vehicle_no);
-                cmd.Parameters.AddWithValue("@packageName", package_type);
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
@@ -140,18 +129,40 @@ namespace AyuboDrive
             distanceTravelledLabel.Text= tour_distance.ToString() + " Km";
             tourDurationLabel.Text = tour_time_duration.Hours + " Hrs : "+ tour_time_duration.Minutes+" min";
 
-            baseHireChargeLabel.Text ="Rs. "+base_hire_charge;//
-            MessageBox.Show("Rs. " + base_hire_charge);
+            baseHireChargeLabel.Text =base_hire_charge+ "/=";//
+            MessageBox.Show("" + base_hire_charge);
 
             extraKmsLabel.Text = String.Format("{0:0.##}", extra_km_travelled)+" Km"; 
-            extraKmChargeRateLabel.Text = "Rs. " + String.Format("{0:0.##}", extra_Km_rate); 
-            extraKmChargeLabel.Text = "Rs. " + extra_km_charge.ToString(); 
+            extraKmChargeRateLabel.Text = String.Format("{0:0.##}", extra_Km_rate) + " /="; 
+            extraKmChargeLabel.Text = extra_km_charge.ToString() + " /="; 
 
             extraHoursLabel.Text = Math.Round(extra_hours_travelled,2) + " Hrs"; 
-            waitingChargeRateLabel.Text = "Rs. " + String.Format("{0:0.##}", waiting_charge_per_hour); 
-            waitingChargeLabel.Text = "Rs. " + String.Format("{0:0.##}", waiting_charge);
+            waitingChargeRateLabel.Text =String.Format("{0:0.##}", waiting_charge_per_hour) + " /="; 
+            waitingChargeLabel.Text = String.Format("{0:0.##}", waiting_charge) + " /=";
             
-            totalHireLabel.Text = "Rs. " + String.Format("{0:0.##}", total_rent);
+            totalHireLabel.Text = String.Format("{0:0.##}", total_rent)+" /=";
+        }
+
+        private void searchComboBoxValues()
+        {
+            try
+            {
+                cnn.Open();
+                SqlDataAdapter da = new SqlDataAdapter
+                    ("select idvehicle, name, concat(idvehicle,' - ',name) AS forCombo FROM Vehicle;"
+                    , cnn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                vehicleNoComboTxt.DataSource = dt;
+                vehicleNoComboTxt.DisplayMember = "forCombo";
+                vehicleNoComboTxt.ValueMember = "idvehicle";
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

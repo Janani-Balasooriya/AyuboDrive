@@ -39,7 +39,7 @@
             // vehicleBtn
             // 
             this.vehicleBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vehicleBtn.Location = new System.Drawing.Point(94, 80);
+            this.vehicleBtn.Location = new System.Drawing.Point(94, 137);
             this.vehicleBtn.Name = "vehicleBtn";
             this.vehicleBtn.Size = new System.Drawing.Size(164, 56);
             this.vehicleBtn.TabIndex = 0;
@@ -50,7 +50,7 @@
             // vehicleTypeBtn
             // 
             this.vehicleTypeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vehicleTypeBtn.Location = new System.Drawing.Point(301, 80);
+            this.vehicleTypeBtn.Location = new System.Drawing.Point(301, 137);
             this.vehicleTypeBtn.Name = "vehicleTypeBtn";
             this.vehicleTypeBtn.Size = new System.Drawing.Size(164, 56);
             this.vehicleTypeBtn.TabIndex = 0;
@@ -94,7 +94,7 @@
             // packageDetailsBtn
             // 
             this.packageDetailsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.packageDetailsBtn.Location = new System.Drawing.Point(504, 80);
+            this.packageDetailsBtn.Location = new System.Drawing.Point(504, 137);
             this.packageDetailsBtn.Name = "packageDetailsBtn";
             this.packageDetailsBtn.Size = new System.Drawing.Size(164, 56);
             this.packageDetailsBtn.TabIndex = 0;
@@ -114,7 +114,9 @@
             this.Controls.Add(this.vehicleTypeBtn);
             this.Controls.Add(this.vehicleBtn);
             this.Name = "MenuForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuForm";
+            this.Load += new System.EventHandler(this.MenuForm_Load);
             this.ResumeLayout(false);
 
         }

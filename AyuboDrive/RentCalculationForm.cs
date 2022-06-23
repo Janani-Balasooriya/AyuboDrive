@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace AyuboDrive
 {
-    public partial class RentCalculationForm : Form
+    public partial class RentCalculationForm : MaterialForm
     {
         static string connectionStr = "Data Source=DESKTOP-GA6UOAH\\SQLEXPRESS;" +
             "Initial Catalog=AyuboDrive; Integrated Security=true;";
@@ -19,11 +21,19 @@ namespace AyuboDrive
         public RentCalculationForm()
         {
             InitializeComponent();
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800,
+                Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+
+            searchComboBoxValues();
         }
 
         private void calculateBtn_Click(object sender, EventArgs e)
         {
-            int vehicle_no = Int32.Parse(vehicleNoTxt.Text.ToString());
+            //int vehicle_no = Int32.Parse(vehicleNoComboTxt.Text.ToString());
+            string vehicle_no = vehicleNoComboTxt.SelectedValue.ToString();
             DateTime rented_date = rentedDateDtp.Value.Date;
             DateTime return_date = returnDateDtp.Value.Date;
             
@@ -38,28 +48,29 @@ namespace AyuboDrive
             }
 
             calculateRent(vehicle_no,rented_date,return_date, with_driver);
+            panel1.Visible = true;
         }
-        private double calculateRent(int vehicle_no, DateTime rented_date, DateTime return_date, bool with_driver)
+
+        private double calculateRent(string vehicle_no, DateTime rented_date,
+            DateTime return_date, bool with_driver)
         {
             int daily_rate = 0;
             int weekly_rate = 0;
             int monthly_rate = 0;
             int daily_driver_rate = 0;
-
             try
             {
                 cnn.Open();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Vehicle WHERE idvehicle=@id", cnn);
-                cmd.Parameters.AddWithValue("@id", vehicleNoTxt.Text);
+                cmd.Parameters.AddWithValue("@id", vehicle_no);
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    vehicleNameTxt.Text = dr[1].ToString();
+                   // vehicleNameTxt.Text = dr[1].ToString();
                     monthly_rate = Int32.Parse(dr[2].ToString());
                     weekly_rate = Int32.Parse(dr[3].ToString());
                     daily_rate = Int32.Parse(dr[4].ToString());
                     daily_driver_rate = Int32.Parse(dr[5].ToString());
-                    
                 }
                 else
                 {
@@ -72,11 +83,10 @@ namespace AyuboDrive
                 MessageBox.Show(ex.Message);
             }
 
-            
-            dailyRentLabel.Text = daily_rate.ToString();
-            weeklyRentLabel.Text = weekly_rate.ToString();
-            monthlyRateLabel.Text = monthly_rate.ToString();
-            driverRateLabel.Text = daily_driver_rate.ToString();
+            dailyRentLabel.Text = daily_rate.ToString() + "/=";
+            weeklyRentLabel.Text = weekly_rate.ToString() + "/=";
+            monthlyRateLabel.Text = monthly_rate.ToString() + "/=";
+            driverRateLabel.Text = daily_driver_rate.ToString() + "/=";
 
             int month_count = 0;
             int week_count = 0;
@@ -132,10 +142,10 @@ namespace AyuboDrive
                 total_rent_value += driver_cost;
             }
 
-            monthsLabel.Text = month_count.ToString();
-            weeksLabel.Text = week_count.ToString();
-            daysLabel.Text = day_count.ToString();
-            driverLabel.Text = days_rented.ToString();
+            monthsLabel.Text = month_count.ToString()+" months";
+            weeksLabel.Text = week_count.ToString()+ " weeks";
+            daysLabel.Text = day_count.ToString()+" days";
+            driverLabel.Text = days_rented.ToString() +" days";
           
             Console.WriteLine("total rent value : "+total_rent_value);
             Console.WriteLine("--------------");
@@ -146,35 +156,35 @@ namespace AyuboDrive
             total_rent_value = monthly_rent + weekly_rent + daily_rent+ driver_cost;
             Console.WriteLine("total rent value : " + total_rent_value);
 
-            totalMonthlyRentLabel.Text = monthly_rent.ToString();
-            totalWeeklyRentLabel.Text = weekly_rent.ToString();
-            totalDailyRentLabel.Text = daily_rent.ToString();
-            totalDriverCostLabel.Text = driver_cost.ToString();
-            totalRentLabel.Text = total_rent_value.ToString();
+            totalMonthlyRentLabel.Text = monthly_rent.ToString() + "/=";
+            totalWeeklyRentLabel.Text = weekly_rent.ToString() + "/=";
+            totalDailyRentLabel.Text = daily_rent.ToString() + "/=";
+            totalDriverCostLabel.Text = driver_cost.ToString() + "/=";
+            totalRentLabel.Text = total_rent_value.ToString()+ "/=";
 
             return total_rent_value;
 
         }
 
-      
-
         private void vehicleNoTxt_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchComboBoxValues()
         {
             try
             {
                 cnn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Vehicle WHERE idvehicle=@id", cnn);
-                cmd.Parameters.AddWithValue("@id", vehicleNoTxt.Text);
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.Read())
-                {
-                    vehicleNameTxt.Text = dr[1].ToString();
+                SqlDataAdapter da = new SqlDataAdapter
+                    ("select idvehicle, name, concat(idvehicle,' - ',name) AS forCombo FROM Vehicle;"
+                    , cnn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
-                }
-                else
-                {
-                    MessageBox.Show("Vehicle NOT Found");
-                }
+                vehicleNoComboTxt.DataSource = dt;
+                vehicleNoComboTxt.DisplayMember = "forCombo";
+                vehicleNoComboTxt.ValueMember = "idvehicle";
                 cnn.Close();
             }
             catch (Exception ex)
