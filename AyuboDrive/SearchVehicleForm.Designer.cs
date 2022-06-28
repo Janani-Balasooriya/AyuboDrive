@@ -39,6 +39,7 @@
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.vehicleTypeCombo = new System.Windows.Forms.ComboBox();
             this.clearBtn = new MaterialSkin.Controls.MaterialButton();
+            this.HomeBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,7 +128,7 @@
             this.clearBtn.DrawShadows = true;
             this.clearBtn.HighEmphasis = true;
             this.clearBtn.Icon = null;
-            this.clearBtn.Location = new System.Drawing.Point(692, 117);
+            this.clearBtn.Location = new System.Drawing.Point(223, 121);
             this.clearBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.clearBtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.clearBtn.Name = "clearBtn";
@@ -139,11 +140,27 @@
             this.clearBtn.UseVisualStyleBackColor = true;
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
             // 
+            // HomeBtn
+            // 
+            this.HomeBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.HomeBtn.BackgroundImage = global::AyuboDrive.Properties.Resources.home_icon_silhouette;
+            this.HomeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.HomeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HomeBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.HomeBtn.Location = new System.Drawing.Point(692, 26);
+            this.HomeBtn.Name = "HomeBtn";
+            this.HomeBtn.Size = new System.Drawing.Size(36, 34);
+            this.HomeBtn.TabIndex = 43;
+            this.HomeBtn.TabStop = false;
+            this.HomeBtn.UseVisualStyleBackColor = false;
+            this.HomeBtn.Click += new System.EventHandler(this.HomeBtn_Click);
+            // 
             // SearchVehicleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.HomeBtn);
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.materialLabel6);
             this.Controls.Add(this.vehicleTypeCombo);
@@ -169,5 +186,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private System.Windows.Forms.ComboBox vehicleTypeCombo;
         private MaterialSkin.Controls.MaterialButton clearBtn;
+        private System.Windows.Forms.Button HomeBtn;
     }
 }

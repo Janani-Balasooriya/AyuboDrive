@@ -45,12 +45,14 @@
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
             this.daysForBaseHireChargeLbl = new System.Windows.Forms.Label();
             this.nightParkRateChargeLabel = new System.Windows.Forms.Label();
             this.baseHireChargeLabel = new System.Windows.Forms.Label();
             this.nightParkRateLabel = new System.Windows.Forms.Label();
             this.daysNightParkLabel = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -70,14 +72,13 @@
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
-            this.label1 = new System.Windows.Forms.Label();
             this.calculateBtn = new MaterialSkin.Controls.MaterialButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.HomeBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.materialCard2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -288,6 +289,17 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "=";
             // 
+            // materialDivider2
+            // 
+            this.materialDivider2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider2.Depth = 0;
+            this.materialDivider2.Location = new System.Drawing.Point(436, 19);
+            this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider2.Name = "materialDivider2";
+            this.materialDivider2.Size = new System.Drawing.Size(10, 128);
+            this.materialDivider2.TabIndex = 41;
+            this.materialDivider2.Text = "materialDivider1";
+            // 
             // daysForBaseHireChargeLbl
             // 
             this.daysForBaseHireChargeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -347,6 +359,16 @@
             this.label24.Size = new System.Drawing.Size(14, 16);
             this.label24.TabIndex = 2;
             this.label24.Text = "=";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(163, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 16);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "=";
             // 
             // label18
             // 
@@ -541,27 +563,6 @@
             this.materialLabel6.TabIndex = 39;
             this.materialLabel6.Text = "Start Km Reading";
             // 
-            // materialDivider2
-            // 
-            this.materialDivider2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialDivider2.Depth = 0;
-            this.materialDivider2.Location = new System.Drawing.Point(436, 19);
-            this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialDivider2.Name = "materialDivider2";
-            this.materialDivider2.Size = new System.Drawing.Size(10, 128);
-            this.materialDivider2.TabIndex = 41;
-            this.materialDivider2.Text = "materialDivider1";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(163, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 16);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "=";
-            // 
             // calculateBtn
             // 
             this.calculateBtn.AutoSize = false;
@@ -642,11 +643,27 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Max Km Limit";
             // 
+            // HomeBtn
+            // 
+            this.HomeBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.HomeBtn.BackgroundImage = global::AyuboDrive.Properties.Resources.home_icon_silhouette;
+            this.HomeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.HomeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HomeBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.HomeBtn.Location = new System.Drawing.Point(499, 27);
+            this.HomeBtn.Name = "HomeBtn";
+            this.HomeBtn.Size = new System.Drawing.Size(36, 34);
+            this.HomeBtn.TabIndex = 43;
+            this.HomeBtn.TabStop = false;
+            this.HomeBtn.UseVisualStyleBackColor = false;
+            this.HomeBtn.Click += new System.EventHandler(this.HomeBtn_Click);
+            // 
             // LongTourHireCalculationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(616, 537);
+            this.Controls.Add(this.HomeBtn);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.calculateBtn);
             this.Controls.Add(this.materialLabel5);
@@ -662,7 +679,7 @@
             this.Controls.Add(this.startDayDtp);
             this.Name = "LongTourHireCalculationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LongTourHireCalculationForm";
+            this.Text = "Long Tour Hire Calculation";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.materialCard2.ResumeLayout(false);
@@ -729,5 +746,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button HomeBtn;
     }
 }

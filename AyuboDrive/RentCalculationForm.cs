@@ -32,7 +32,6 @@ namespace AyuboDrive
 
         private void calculateBtn_Click(object sender, EventArgs e)
         {
-            //int vehicle_no = Int32.Parse(vehicleNoComboTxt.Text.ToString());
             string vehicle_no = vehicleNoComboTxt.SelectedValue.ToString();
             DateTime rented_date = rentedDateDtp.Value.Date;
             DateTime return_date = returnDateDtp.Value.Date;
@@ -191,6 +190,13 @@ namespace AyuboDrive
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void HomeBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MenuForm().ShowDialog();
+            this.Close();
         }
     }
 }

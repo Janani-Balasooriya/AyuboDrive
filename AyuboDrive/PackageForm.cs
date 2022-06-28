@@ -93,7 +93,6 @@ namespace AyuboDrive
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Package updated!", "Database update",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //ClearForm();
                 cnn.Close();
                 LoadPackageIDValuesToComboBox();
                 LoadNextPackageID();
@@ -116,7 +115,6 @@ namespace AyuboDrive
                 vehicleTypeCombo.DisplayMember = "name";
                 vehicleTypeCombo.ValueMember = "idType";
                 vehicleTypeCombo.DataSource = dt;
-
             }
             catch (Exception ex)
             {
@@ -275,6 +273,20 @@ namespace AyuboDrive
         {
             this.Hide();
             new SearchPackageForm().ShowDialog();
+            this.Close();
+        }
+
+        private void HomeBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MenuForm().ShowDialog();
+            this.Close();
+        }
+
+        private void HomeBtn_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MenuForm().ShowDialog();
             this.Close();
         }
     }

@@ -114,5 +114,12 @@ namespace AyuboDrive
         {
 
         }
+
+        private void HomeBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MenuForm().ShowDialog();
+            this.Close();
+        }
     }
 }

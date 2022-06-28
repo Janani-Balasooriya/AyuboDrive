@@ -27,6 +27,7 @@ namespace AyuboDrive
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800,
                 Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
             LoadAllVehicleTypeTable();
+            LoadNextPackageID();
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
@@ -97,8 +98,9 @@ namespace AyuboDrive
 
         private void clearForm()
         {
-            vehicleIDTxt.Text = "";
             vehicleNameTxt.Text = "";
+            LoadNextPackageID();
+            LoadNextPackageID();
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
@@ -118,6 +120,9 @@ namespace AyuboDrive
         private void clearBtn_Click(object sender, EventArgs e)
         {
             clearForm();
+            saveBtn.Enabled = true;
+            updateBtn.Enabled = false;
+            deleteBtn.Enabled = false;
         }
 
         private void LoadAllVehicleTypeTable()
@@ -143,6 +148,44 @@ namespace AyuboDrive
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            vehicleIDTxt.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            vehicleNameTxt.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            saveBtn.Enabled = false;
+            updateBtn.Enabled = true;
+            deleteBtn.Enabled = true;
+        }
+
+        private void LoadNextPackageID()
+        {
+            try
+            {
+                cnn.Open();
+                SqlCommand cmd = new SqlCommand
+                    ("select MAX(idType+1) AS VID from VehicleType;", cnn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    vehicleIDTxt.Text = dr["VID"].ToString();
+                }
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                cnn.Close();
+            }
+        }
+
+        private void HomeBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MenuForm().ShowDialog();
+            this.Close();
         }
     }
 }

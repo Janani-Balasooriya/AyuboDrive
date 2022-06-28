@@ -121,7 +121,7 @@ namespace AyuboDrive
             overnight_stay_charge = driver_overnight_stay_charge + vehicle_night_park_charge;
 
             // Calculating total rent
-            double total_rent = standard_rate + overnight_stay_charge +extra_km_charge;
+            double total_rent = base_hire_charge + overnight_stay_charge +extra_km_charge;
 
             // Displaying values in interface
             maxKmLimitLabel.Text = max_Km_limit.ToString() + " Km";
@@ -168,6 +168,13 @@ namespace AyuboDrive
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void HomeBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MenuForm().ShowDialog();
+            this.Close();
         }
     }
 }

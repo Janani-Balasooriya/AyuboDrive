@@ -70,6 +70,7 @@
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.calculateBtn = new MaterialSkin.Controls.MaterialButton();
+            this.HomeBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.materialCard1.SuspendLayout();
@@ -545,11 +546,27 @@
             this.calculateBtn.UseVisualStyleBackColor = true;
             this.calculateBtn.Click += new System.EventHandler(this.calculateBtn_Click);
             // 
+            // HomeBtn
+            // 
+            this.HomeBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.HomeBtn.BackgroundImage = global::AyuboDrive.Properties.Resources.home_icon_silhouette;
+            this.HomeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.HomeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HomeBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.HomeBtn.Location = new System.Drawing.Point(537, 26);
+            this.HomeBtn.Name = "HomeBtn";
+            this.HomeBtn.Size = new System.Drawing.Size(36, 34);
+            this.HomeBtn.TabIndex = 43;
+            this.HomeBtn.TabStop = false;
+            this.HomeBtn.UseVisualStyleBackColor = false;
+            this.HomeBtn.Click += new System.EventHandler(this.HomeBtn_Click);
+            // 
             // RentCalculationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 545);
+            this.Controls.Add(this.HomeBtn);
             this.Controls.Add(this.calculateBtn);
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.materialLabel3);
@@ -618,6 +635,7 @@
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialDivider materialDivider2;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button HomeBtn;
     }
 }
 

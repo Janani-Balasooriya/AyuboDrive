@@ -61,8 +61,6 @@ namespace AyuboDrive
             int max_hours = 0;
             double extra_Km_rate = 0;
             double waiting_charge_per_hour = 0;
-            //double driver_overnight_rate;
-            //double night_park_rate;
 
             try
             {
@@ -75,13 +73,12 @@ namespace AyuboDrive
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    base_hire_charge = double.Parse(dr[2].ToString(), System.Globalization.NumberStyles.AllowDecimalPoint);
+                    base_hire_charge = double.Parse(dr[2].ToString(), 
+                        System.Globalization.NumberStyles.AllowDecimalPoint);
                     max_Km_limit = double.Parse(dr[3].ToString());
                     max_hours = Int32.Parse(dr[4].ToString());
                     extra_Km_rate = double.Parse(dr[5].ToString()); 
                     waiting_charge_per_hour = double.Parse(dr[6].ToString());
-                    // driver_overnight_rate = double.Parse(dr[7].ToString());
-                    //night_park_rate = double.Parse(dr[8].ToString());
                 }
                 else
                 {
@@ -163,6 +160,13 @@ namespace AyuboDrive
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void HomeBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MenuForm().ShowDialog();
+            this.Close();
         }
     }
 }

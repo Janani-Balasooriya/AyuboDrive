@@ -34,8 +34,10 @@ namespace AyuboDrive
 
         private void vehicleTypeBtn_Click(object sender, EventArgs e)
         {
+            this.Hide();
             VehicleTypeForm vehicleTypeForm = new VehicleTypeForm();
             vehicleTypeForm.ShowDialog();
+            this.Close();
         }
 
         private void rentCalculationBtn_Click(object sender, EventArgs e)
@@ -73,6 +75,20 @@ namespace AyuboDrive
         private void MenuForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MenuForm().ShowDialog();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MenuForm().ShowDialog();
+            this.Close();
         }
     }
 }

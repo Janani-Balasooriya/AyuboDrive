@@ -43,6 +43,7 @@
             this.vehicleBtn.Name = "vehicleBtn";
             this.vehicleBtn.Size = new System.Drawing.Size(164, 56);
             this.vehicleBtn.TabIndex = 0;
+            this.vehicleBtn.TabStop = false;
             this.vehicleBtn.Text = "Vehicle Details";
             this.vehicleBtn.UseVisualStyleBackColor = true;
             this.vehicleBtn.Click += new System.EventHandler(this.vehicleBtn_Click);
@@ -54,6 +55,7 @@
             this.vehicleTypeBtn.Name = "vehicleTypeBtn";
             this.vehicleTypeBtn.Size = new System.Drawing.Size(164, 56);
             this.vehicleTypeBtn.TabIndex = 0;
+            this.vehicleTypeBtn.TabStop = false;
             this.vehicleTypeBtn.Text = "Vehicle Type Details";
             this.vehicleTypeBtn.UseVisualStyleBackColor = true;
             this.vehicleTypeBtn.Click += new System.EventHandler(this.vehicleTypeBtn_Click);
@@ -65,6 +67,7 @@
             this.rentCalculationBtn.Name = "rentCalculationBtn";
             this.rentCalculationBtn.Size = new System.Drawing.Size(164, 56);
             this.rentCalculationBtn.TabIndex = 0;
+            this.rentCalculationBtn.TabStop = false;
             this.rentCalculationBtn.Text = "Rent Calculation";
             this.rentCalculationBtn.UseVisualStyleBackColor = true;
             this.rentCalculationBtn.Click += new System.EventHandler(this.rentCalculationBtn_Click);
@@ -76,6 +79,7 @@
             this.dayTourHireBtn.Name = "dayTourHireBtn";
             this.dayTourHireBtn.Size = new System.Drawing.Size(164, 56);
             this.dayTourHireBtn.TabIndex = 0;
+            this.dayTourHireBtn.TabStop = false;
             this.dayTourHireBtn.Text = "Day Tour Hire Calculation";
             this.dayTourHireBtn.UseVisualStyleBackColor = true;
             this.dayTourHireBtn.Click += new System.EventHandler(this.dayTourHireBtn_Click);
@@ -87,6 +91,7 @@
             this.longTourHireBtn.Name = "longTourHireBtn";
             this.longTourHireBtn.Size = new System.Drawing.Size(164, 56);
             this.longTourHireBtn.TabIndex = 0;
+            this.longTourHireBtn.TabStop = false;
             this.longTourHireBtn.Text = "Long Tour Hire Calculation";
             this.longTourHireBtn.UseVisualStyleBackColor = true;
             this.longTourHireBtn.Click += new System.EventHandler(this.longTourHireBtn_Click);
@@ -98,6 +103,7 @@
             this.packageDetailsBtn.Name = "packageDetailsBtn";
             this.packageDetailsBtn.Size = new System.Drawing.Size(164, 56);
             this.packageDetailsBtn.TabIndex = 0;
+            this.packageDetailsBtn.TabStop = false;
             this.packageDetailsBtn.Text = "Package Details";
             this.packageDetailsBtn.UseVisualStyleBackColor = true;
             this.packageDetailsBtn.Click += new System.EventHandler(this.packageDetailsBtn_Click);
@@ -115,7 +121,7 @@
             this.Controls.Add(this.vehicleBtn);
             this.Name = "MenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MenuForm";
+            this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.MenuForm_Load);
             this.ResumeLayout(false);
 

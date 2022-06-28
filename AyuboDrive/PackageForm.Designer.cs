@@ -55,6 +55,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.overnightRateTxt = new System.Windows.Forms.TextBox();
             this.nightParkRateTxt = new System.Windows.Forms.TextBox();
+            this.HomeBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -391,11 +392,27 @@
             this.nightParkRateTxt.Size = new System.Drawing.Size(169, 26);
             this.nightParkRateTxt.TabIndex = 26;
             // 
+            // HomeBtn
+            // 
+            this.HomeBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.HomeBtn.BackgroundImage = global::AyuboDrive.Properties.Resources.home_icon_silhouette;
+            this.HomeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.HomeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HomeBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.HomeBtn.Location = new System.Drawing.Point(686, 27);
+            this.HomeBtn.Name = "HomeBtn";
+            this.HomeBtn.Size = new System.Drawing.Size(36, 34);
+            this.HomeBtn.TabIndex = 43;
+            this.HomeBtn.TabStop = false;
+            this.HomeBtn.UseVisualStyleBackColor = false;
+            this.HomeBtn.Click += new System.EventHandler(this.HomeBtn_Click_1);
+            // 
             // PackageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 488);
+            this.Controls.Add(this.HomeBtn);
             this.Controls.Add(this.tabControl1);
             this.Name = "PackageForm";
             this.Text = "Tour Package Management";
@@ -436,5 +453,6 @@
         private MaterialSkin.Controls.MaterialButton clearBtn;
         private MaterialSkin.Controls.MaterialButton saveBtn;
         private System.Windows.Forms.ComboBox packageIDComboTxt;
+        private System.Windows.Forms.Button HomeBtn;
     }
 }

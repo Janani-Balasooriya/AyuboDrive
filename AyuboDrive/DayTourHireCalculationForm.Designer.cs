@@ -33,7 +33,11 @@
             this.endKmReadingTxt = new System.Windows.Forms.TextBox();
             this.endTimeDtp = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
             this.totalHireLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
             this.waitingChargeLabel = new System.Windows.Forms.Label();
             this.waitingChargeRateLabel = new System.Windows.Forms.Label();
             this.extraKmChargeLabel = new System.Windows.Forms.Label();
@@ -41,6 +45,7 @@
             this.extraHoursLabel = new System.Windows.Forms.Label();
             this.baseHireChargeLabel = new System.Windows.Forms.Label();
             this.extraKmsLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -58,10 +63,6 @@
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
-            this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.calculateBtn = new MaterialSkin.Controls.MaterialButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -69,7 +70,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.HomeBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.materialCard2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -143,6 +144,22 @@
             this.panel1.TabIndex = 14;
             this.panel1.Visible = false;
             // 
+            // materialCard2
+            // 
+            this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard2.Controls.Add(this.totalHireLabel);
+            this.materialCard2.Controls.Add(this.label1);
+            this.materialCard2.Controls.Add(this.label2);
+            this.materialCard2.Depth = 0;
+            this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard2.Location = new System.Drawing.Point(11, 104);
+            this.materialCard2.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard2.Name = "materialCard2";
+            this.materialCard2.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard2.Size = new System.Drawing.Size(544, 40);
+            this.materialCard2.TabIndex = 21;
+            // 
             // totalHireLabel
             // 
             this.totalHireLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -152,6 +169,37 @@
             this.totalHireLabel.TabIndex = 5;
             this.totalHireLabel.Text = "label6";
             this.totalHireLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Total hire";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(117, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(14, 16);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "=";
+            // 
+            // materialDivider2
+            // 
+            this.materialDivider2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider2.Depth = 0;
+            this.materialDivider2.Location = new System.Drawing.Point(438, 9);
+            this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider2.Name = "materialDivider2";
+            this.materialDivider2.Size = new System.Drawing.Size(10, 128);
+            this.materialDivider2.TabIndex = 19;
+            this.materialDivider2.Text = "materialDivider1";
             // 
             // waitingChargeLabel
             // 
@@ -222,6 +270,16 @@
             this.extraKmsLabel.TabIndex = 3;
             this.extraKmsLabel.Text = "label6";
             this.extraKmsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(128, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(14, 16);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "=";
             // 
             // label27
             // 
@@ -405,53 +463,6 @@
             this.materialLabel5.TabIndex = 19;
             this.materialLabel5.Text = "End Km Reading";
             // 
-            // materialDivider2
-            // 
-            this.materialDivider2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialDivider2.Depth = 0;
-            this.materialDivider2.Location = new System.Drawing.Point(438, 9);
-            this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialDivider2.Name = "materialDivider2";
-            this.materialDivider2.Size = new System.Drawing.Size(10, 128);
-            this.materialDivider2.TabIndex = 19;
-            this.materialDivider2.Text = "materialDivider1";
-            // 
-            // materialCard2
-            // 
-            this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard2.Controls.Add(this.totalHireLabel);
-            this.materialCard2.Controls.Add(this.label1);
-            this.materialCard2.Controls.Add(this.label2);
-            this.materialCard2.Depth = 0;
-            this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard2.Location = new System.Drawing.Point(11, 104);
-            this.materialCard2.Margin = new System.Windows.Forms.Padding(14);
-            this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCard2.Name = "materialCard2";
-            this.materialCard2.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard2.Size = new System.Drawing.Size(544, 40);
-            this.materialCard2.TabIndex = 21;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Total hire";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(117, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(14, 16);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "=";
-            // 
             // calculateBtn
             // 
             this.calculateBtn.AutoSize = false;
@@ -544,21 +555,27 @@
             this.panel2.TabIndex = 24;
             this.panel2.Visible = false;
             // 
-            // label3
+            // HomeBtn
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(128, 14);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(14, 16);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "=";
+            this.HomeBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.HomeBtn.BackgroundImage = global::AyuboDrive.Properties.Resources.home_icon_silhouette;
+            this.HomeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.HomeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HomeBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.HomeBtn.Location = new System.Drawing.Point(510, 27);
+            this.HomeBtn.Name = "HomeBtn";
+            this.HomeBtn.Size = new System.Drawing.Size(36, 34);
+            this.HomeBtn.TabIndex = 44;
+            this.HomeBtn.TabStop = false;
+            this.HomeBtn.UseVisualStyleBackColor = false;
+            this.HomeBtn.Click += new System.EventHandler(this.HomeBtn_Click);
             // 
             // DayTourHireCalculationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 506);
+            this.Controls.Add(this.HomeBtn);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.calculateBtn);
             this.Controls.Add(this.materialLabel3);
@@ -633,5 +650,6 @@
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button HomeBtn;
     }
 }

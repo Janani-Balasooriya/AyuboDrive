@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.vehicleNameTxt = new System.Windows.Forms.TextBox();
-            this.vehicleIDTxt = new System.Windows.Forms.TextBox();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.deleteBtn = new MaterialSkin.Controls.MaterialButton();
@@ -39,6 +38,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vehicleIDTxt = new System.Windows.Forms.Label();
+            this.HomeBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,14 +50,6 @@
             this.vehicleNameTxt.Name = "vehicleNameTxt";
             this.vehicleNameTxt.Size = new System.Drawing.Size(155, 26);
             this.vehicleNameTxt.TabIndex = 6;
-            // 
-            // vehicleIDTxt
-            // 
-            this.vehicleIDTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vehicleIDTxt.Location = new System.Drawing.Point(26, 128);
-            this.vehicleIDTxt.Name = "vehicleIDTxt";
-            this.vehicleIDTxt.Size = new System.Drawing.Size(155, 26);
-            this.vehicleIDTxt.TabIndex = 4;
             // 
             // materialLabel6
             // 
@@ -174,6 +167,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(393, 290);
             this.dataGridView1.TabIndex = 40;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // Column1
             // 
@@ -185,11 +179,39 @@
             this.Column2.HeaderText = "Vehicle Type Name";
             this.Column2.Name = "Column2";
             // 
+            // vehicleIDTxt
+            // 
+            this.vehicleIDTxt.AutoSize = true;
+            this.vehicleIDTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.vehicleIDTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vehicleIDTxt.Location = new System.Drawing.Point(25, 134);
+            this.vehicleIDTxt.Name = "vehicleIDTxt";
+            this.vehicleIDTxt.Size = new System.Drawing.Size(53, 22);
+            this.vehicleIDTxt.TabIndex = 41;
+            this.vehicleIDTxt.Text = "label1";
+            // 
+            // HomeBtn
+            // 
+            this.HomeBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.HomeBtn.BackgroundImage = global::AyuboDrive.Properties.Resources.home_icon_silhouette;
+            this.HomeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.HomeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HomeBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.HomeBtn.Location = new System.Drawing.Point(563, 27);
+            this.HomeBtn.Name = "HomeBtn";
+            this.HomeBtn.Size = new System.Drawing.Size(36, 34);
+            this.HomeBtn.TabIndex = 42;
+            this.HomeBtn.TabStop = false;
+            this.HomeBtn.UseVisualStyleBackColor = false;
+            this.HomeBtn.Click += new System.EventHandler(this.HomeBtn_Click);
+            // 
             // VehicleTypeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(683, 397);
+            this.Controls.Add(this.HomeBtn);
+            this.Controls.Add(this.vehicleIDTxt);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.updateBtn);
@@ -198,7 +220,6 @@
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialLabel6);
             this.Controls.Add(this.vehicleNameTxt);
-            this.Controls.Add(this.vehicleIDTxt);
             this.Name = "VehicleTypeForm";
             this.Text = "Vehicle Types";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -209,7 +230,6 @@
 
         #endregion
         private System.Windows.Forms.TextBox vehicleNameTxt;
-        private System.Windows.Forms.TextBox vehicleIDTxt;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialButton deleteBtn;
@@ -219,5 +239,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.Label vehicleIDTxt;
+        private System.Windows.Forms.Button HomeBtn;
     }
 }

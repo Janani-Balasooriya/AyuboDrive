@@ -53,7 +53,6 @@ namespace AyuboDrive
 
         private void ClearForm()
         {
-            //vehicleNoComboTxt.Text = "";
             vehicleNameTxt.Text = "";
             monthlyRateTxt.Text = "";
             weeklyRateTxt.Text = "";
@@ -232,6 +231,13 @@ namespace AyuboDrive
         {
             ClearForm();
             vehicleNoComboTxt.Text = "";
+        }
+
+        private void HomeBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MenuForm().ShowDialog();
+            this.Close();
         }
     }
 }

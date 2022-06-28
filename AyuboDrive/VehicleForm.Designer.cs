@@ -47,6 +47,7 @@
             this.searchBtn = new MaterialSkin.Controls.MaterialButton();
             this.vehicleNoComboTxt = new System.Windows.Forms.ComboBox();
             this.clearBtn = new MaterialSkin.Controls.MaterialButton();
+            this.HomeBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // vehicleNameTxt
@@ -298,11 +299,27 @@
             this.clearBtn.UseVisualStyleBackColor = true;
             this.clearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
             // 
+            // HomeBtn
+            // 
+            this.HomeBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.HomeBtn.BackgroundImage = global::AyuboDrive.Properties.Resources.home_icon_silhouette;
+            this.HomeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.HomeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HomeBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.HomeBtn.Location = new System.Drawing.Point(267, 26);
+            this.HomeBtn.Name = "HomeBtn";
+            this.HomeBtn.Size = new System.Drawing.Size(36, 34);
+            this.HomeBtn.TabIndex = 43;
+            this.HomeBtn.TabStop = false;
+            this.HomeBtn.UseVisualStyleBackColor = false;
+            this.HomeBtn.Click += new System.EventHandler(this.HomeBtn_Click);
+            // 
             // VehicleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(377, 450);
+            this.Controls.Add(this.HomeBtn);
             this.Controls.Add(this.vehicleNoComboTxt);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.deleteBtn);
@@ -349,5 +366,6 @@
         private MaterialSkin.Controls.MaterialButton searchBtn;
         private System.Windows.Forms.ComboBox vehicleNoComboTxt;
         private MaterialSkin.Controls.MaterialButton clearBtn;
+        private System.Windows.Forms.Button HomeBtn;
     }
 }
